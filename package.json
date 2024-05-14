@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "vitepress": "^1.1.4"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@types/node": "^20.11.14",
+    "axios": "^1.6.7"
+  }
+}
