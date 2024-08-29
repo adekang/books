@@ -1,12 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 
-/***
- * 为所有的MD文件添加头部
- */
-
 const rootFolder = path.join(__dirname, "../docs"); // 替换为你的根文件夹路径
-
+/**
+ * 如果MD文件内容为空，则添内容 `# ${mdFileName}\n 暂未写作`
+ * @param {*} mdFilePath
+ */
 function addHeaderIfEmpty(mdFilePath) {
   try {
     // 读取MD文件内容

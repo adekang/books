@@ -1,5 +1,17 @@
+
+/**
+ * 创建一个 JSON 文件，包含当前book的路由的文档路由
+ */
+
 const fs = require("fs");
 const path = require("path");
+
+// 路径名字  上传新的书籍时需要修改
+const pathName = 'ts-learn'
+const directoryPath = path.join(__dirname, `../src/docs/${pathName}`);
+const fileName = `${pathName}.json`
+
+
 
 const customSort = (a, b) => {
   const getChapterNumber = (str) => parseInt(str.match(/(\d+)/)[1], 10);
@@ -10,7 +22,10 @@ const customSort = (a, b) => {
   return chapterA - chapterB;
 };
 
-const directoryPath = path.join(__dirname, "../docs");
+const genLink = (path, name) => {
+  return `/docs/${path}/${name}`
+}
+
 
 fs.readdir(directoryPath, (err, files) => {
   if (err) {
@@ -29,14 +44,14 @@ fs.readdir(directoryPath, (err, files) => {
 
   const routes = sortedFiles.map((file) => {
     const name = file.replace(".md", "");
-    const link = `/docs/${name}`;
+    const link = genLink(pathName, name);
     return { text: name, link };
   });
 
   // 将排序后的数组保存为 JSON 文件
   const jsonContent = JSON.stringify(routes, null, 2);
 
-  fs.writeFile("routes.json", jsonContent, "utf8", (err) => {
+  fs.writeFile(fileName, jsonContent, "utf8", (err) => {
     if (err) {
       console.error("Error writing JSON file:", err);
     } else {

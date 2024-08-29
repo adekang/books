@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
-import routes from '../routes.json'
+import tsPlayground from '../ts-playground.json'
+import tsLearn from '../ts-learn.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,14 +9,22 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'TypeScript 入门教程', link: '/docs/1.开篇：用正确的方式学习 TypeScript' },
+      { text: 'TypeScript 入门教程', link: '/docs/ts-learn/1 如何阅读本小册' },
+      { text: 'TypeScript 类型体操', link: '/docs/ts-playground/1.开篇：用正确的方式学习 TypeScript' },
     ],
     sidebar: {
-      '/docs/': [
+      '/docs/ts-learn': [
         {
           text: 'TypeScript 入门教程',
           collapsed: false,
-          items: routes
+          items: tsLearn
+        },
+      ],
+      '/docs/ts-playground': [
+        {
+          text: 'TypeScript 类型体操',
+          collapsed: false,
+          items: tsPlayground
         }
       ],
     }
